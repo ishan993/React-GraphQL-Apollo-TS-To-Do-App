@@ -4,7 +4,9 @@
   "private": true,
   "main": "build-server/server",
   "scripts": {
-    "start": "nodemon --exec \"ts-node -P src/server\" -w src/server -w src/shared -e ts,tsx,graphql src/server & node scripts/start.js",
+    "start": "run-p start-server start-client",
+    "start-server": "nodemon --exec \"ts-node -P src/server\" -w src/server -w src/shared -e ts,tsx,graphql src/server",
+    "start-client": "node scripts/start.js",
     "build": "npm run build-schema-types && node scripts/build.js && tsc -p src/server",
     "build-schema-types": "apollo-codegen introspect-schema schema/schema.graphql --output .introspected-schema.json && apollo-codegen generate src/client/queries/**/*.graphql --schema .introspected-schema.json --target ts --output src/client/queries/types.ts"
   },
@@ -62,6 +64,7 @@
     "jest": "18.1.0",
     "json-loader": "0.5.4",
     "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
     "object-assign": "4.1.1",
     "postcss-loader": "1.2.2",
     "promise": "7.1.1",
