@@ -24,7 +24,7 @@ Good luck, and have fun!
 - `npm start` will enter dev mode, watching all files in the `src` folder and reloading both the server and page as necessary.
 - Once started, navigate to [http://localhost:3000/](http://localhost:3000/).
 - The server is also running a GraphiQL server at [http://localhost:2999/-/graphiql](http://localhost:2999/-/graphiql).
-- If you change the server's GraphQL schema (see `schema/schema.graphql`) you will need to run `npm run build-server-schema` to regenerate the TypeScript definitions both the server and client use.
+- If you change the server's GraphQL schema (see `schema/schema.graphql`) you will need to run `npm run build-schema-types` to regenerate the TypeScript definitions both the server and client use.
 
 
 ---
