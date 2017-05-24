@@ -6,7 +6,7 @@ This project is not to be shared or posted publicly.  You may of course use any 
 
 ---
 
-Listed below are a series of challenges.  They do not need to be completed in any particular order, so if you get stuck on one you should leave your partial solution in a branch and move on.  Don't be afraid of committing frequently.  It will make it easier to follow your work when we review together.  Note the challenge you were working on in each commit.
+Listed below are a series of challenges.  They do not need to be completed in any particular order, so if you get stuck on one you should leave your partial solution in a branch and move on.  Don't be afraid of committing frequently.  It will make it easier to follow your work when we review together.  Note the challenge you were working on in each commit.  And no code would be complete without a bug or two.  There is at least one bug lying in wait for you.  You may or may not notice it right away, but eventually it will prevent you from proceeding.
 
 Finally, you may go beyond the challenges listed here, provided it doesn't alter original functionality requested.  This is not required and should only be done after each challenge has at least been attempted.
 
