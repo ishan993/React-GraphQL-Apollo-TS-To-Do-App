@@ -10,6 +10,7 @@ const Nav = glamorous.nav({
     right: 0,
     zIndex: 800,
     padding: "15px",
+    background: "white",
     borderBottom: ".3pt solid lightgrey" 
 });
 

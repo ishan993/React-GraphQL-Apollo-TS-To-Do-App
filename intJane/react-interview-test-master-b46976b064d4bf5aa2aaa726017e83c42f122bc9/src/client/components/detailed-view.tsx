@@ -11,6 +11,14 @@ const Wrapper = glamorous.div({
     width: "100%"
 });
 
+const TitleText = glamorous.h1({
+    fontWeight: 200
+});
+
+const BodyText = glamorous.h4({
+    fontWeight: 200
+});
+
 const DetailedView = ( { data, routeProps }: any) => {
 
     if (data.loading) {
@@ -21,7 +29,9 @@ const DetailedView = ( { data, routeProps }: any) => {
 
     return(
         <Wrapper>
-            <h1>{data.item.name}</h1>
+            {console.log("I got this data: " + JSON.stringify(data))}
+            <TitleText>{data.item.name}</TitleText>
+            <BodyText>{data.item.description}</BodyText>
         </Wrapper>
     );
 };

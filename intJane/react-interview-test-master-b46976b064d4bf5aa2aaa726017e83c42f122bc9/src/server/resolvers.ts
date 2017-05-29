@@ -33,9 +33,9 @@ export default (db: string) => {
       }
     },
     Mutation: {
-      addItem(_: void, { name }: { name: string }) {
+      addItem(_: void, { name, description }: { name: string, description: string }) {
         const id = makeId();
-        const item = { id, name };
+        const item = { id, name, description };
         items.push(item);
         saveItems();
         return item;

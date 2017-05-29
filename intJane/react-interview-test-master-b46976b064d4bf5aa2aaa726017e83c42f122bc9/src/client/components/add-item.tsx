@@ -51,6 +51,11 @@ const NameInput = glamorous.input(
   { height: 24 }
 );
 
+const DescInput = glamorous.textarea(
+  sharedInputStyles,
+  { height: 60 }
+);
+
 const ButtonWrapper = glamorous.div({
   width: "100%",
   display: "flex",
@@ -76,6 +81,9 @@ const NameField = ({ input }: WrappedFieldProps<{}>) => (
   <NameInput {...input} />
 );
 
+const DescField = ({ input }: WrappedFieldProps<{}>) => (
+  <DescInput {...input} />
+);
 interface AddItemOuterProps {
   onSubmitSuccess(): void;
 }
@@ -93,6 +101,10 @@ const AddItem = ({ handleSubmit, reset }: AddItemInnerProps) => (
         Name
         <Field name="name" component={NameField}/>
       </Label>
+      <Label>
+        Description
+        <Field name="description" component={DescField}/>
+      </Label>
       <ButtonWrapper>
         <Button type="reset" onClick={reset}>Reset</Button>
         <Button type="submit">Submit</Button>
@@ -106,14 +118,14 @@ export default compose<AddItemInnerProps, AddItemOuterProps>(
   reduxForm({
     form: "add-item",
     onSubmit(
-      { name }: AddItemMutationVariables,
+      { name, description }: AddItemMutationVariables,
       _: Dispatch<{}>,
       props: { mutate: Function }
     ): Promise<{}> {
-      if (!name) throw new Error("Name is required");
+      if (!name || !description) throw new Error("Name is required");
       return props.mutate({
         mutation: itemListQuery,
-        variables: { name },
+        variables: { name, description },
         update(store: DataProxy, { data: { addItem } }: { data: AddItemMutation }): void {
           const data = store.readQuery({ query: itemListQuery }) as ItemListQuery;
           if (data.items) data.items.push(addItem);

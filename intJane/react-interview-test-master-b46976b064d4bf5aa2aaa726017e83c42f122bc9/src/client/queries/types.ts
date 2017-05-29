@@ -3,12 +3,14 @@
 
 export interface AddItemMutationVariables {
   name: string;
+  description: string;
 }
 
 export interface AddItemMutation {
   addItem: {
     id: string,
     name: string,
+    description: string,
   };
 }
 
@@ -26,14 +28,15 @@ export interface ItemListQuery {
   items: Array< {
     id: string,
     name: string,
+    description: string,
   } > | null;
 }
 
-export interface QueryItemQueryVariables {
+export interface ItemQueryQueryVariables {
   id: string;
 }
 
-export interface QueryItemQuery {
+export interface ItemQueryQuery {
   item: {
     name: string,
   } | null;
