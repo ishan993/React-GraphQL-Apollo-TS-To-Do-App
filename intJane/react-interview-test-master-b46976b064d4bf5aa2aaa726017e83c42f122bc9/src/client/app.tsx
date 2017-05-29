@@ -4,8 +4,8 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import { ApolloClient, createNetworkInterface, ApolloProvider } from "react-apollo";
 import { reducer as formReducer } from "redux-form";
 import glamorous from "glamorous";
-import Menu from "./components/menu";
 import ContentRouter from "./components/content-router";
+import NavBar from "./components/nav-bar";
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({
@@ -37,7 +37,7 @@ const App = () => (
   <ApolloProvider store={store} client={client}>
     <BrowserRouter>
       <Container>
-        <Menu />
+        <NavBar />
         <ContentRouter />
       </Container>
     </BrowserRouter>

@@ -9,12 +9,18 @@ import { DataProxy } from "apollo-client/data/proxy";
 import { DocumentNode } from "graphql";
 import { Item } from "../../shared/types";
 import { ItemListQuery, AddItemMutation, AddItemMutationVariables } from "../queries/types";
-
+import Menu from "./menu";
 const itemListQuery: DocumentNode = require("../queries/item-list.graphql");
 const addItemMutation: DocumentNode = require("../queries/add-item.graphql");
 
+const Container = glamorous.div({
+  width: "80%"
+});
+
 const Form = glamorous.form({
   display: "flex",
+  margin: "auto",
+  padding: "10px",
   flexFlow: "column nowrap",
   maxWidth: 400,
   "> *": { margin: "0 0 30px" }
@@ -45,8 +51,16 @@ const NameInput = glamorous.input(
   { height: 24 }
 );
 
+const ButtonWrapper = glamorous.div({
+  width: "100%",
+  display: "flex",
+  justifyContent: "space-around"
+});
+
+
 const Button = glamorous.button({
   height: 40,
+  flexBasis: "40%",
   backgroundColor: "#e9e9e9",
   border: "none",
   outline: "none",
@@ -71,14 +85,20 @@ export interface AddItemInnerProps extends
   FormProps<Partial<Item>, undefined, undefined> {
 }
 
-const AddItem = ({ handleSubmit }: AddItemInnerProps) => (
-  <Form onSubmit={handleSubmit}>
-    <Label>
-      Name
-      <Field name="name" component={NameField} />
-    </Label>
-    <Button type="submit">Submit</Button>
-  </Form>
+const AddItem = ({ handleSubmit, reset }: AddItemInnerProps) => (
+  <Container>
+    <Menu />
+    <Form onSubmit={handleSubmit}>
+      <Label>
+        Name
+        <Field name="name" component={NameField}/>
+      </Label>
+      <ButtonWrapper>
+        <Button type="reset" onClick={reset}>Reset</Button>
+        <Button type="submit">Submit</Button>
+      </ButtonWrapper>
+    </Form>
+  </Container>
 );
 
 export default compose<AddItemInnerProps, AddItemOuterProps>(

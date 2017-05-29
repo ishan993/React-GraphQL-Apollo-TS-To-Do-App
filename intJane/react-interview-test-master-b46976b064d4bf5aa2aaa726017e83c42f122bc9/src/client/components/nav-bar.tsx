@@ -1,5 +1,6 @@
 import * as React from "react";
 import glamorous from "glamorous";
+import { Link } from "react-router-dom";
 
 const Nav = glamorous.nav({
     position: "fixed",
@@ -12,9 +13,16 @@ const Nav = glamorous.nav({
     borderBottom: ".3pt solid lightgrey" 
 });
 
+const NavBarLink = glamorous(Link)({
+    textDecoration: "none",
+    color: "PaleVioletRed"
+});
+
 const NavBar = () => (
     <Nav>
-        Imagine that I'm the NavBar
+        <NavBarLink to={"/"}>
+            Imagine that I'm the NavBar
+        </NavBarLink>
     </Nav>
 );
 export default NavBar;
