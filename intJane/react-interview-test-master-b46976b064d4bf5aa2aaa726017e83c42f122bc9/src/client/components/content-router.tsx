@@ -11,12 +11,10 @@ const Content = glamorous.div({
 
 const ContentRouter = () => (
   <Content>
-    <Route path="/" exact={true} component={(props:RouteComponentProps<{}>)=><ItemList />} />
-    <Route path="/add-item" component={(props: RouteComponentProps<{}>) => {
-      console.log("I got these props: "+JSON.stringify(props));
-      return(
+    <Route path="/" exact={true} component={ItemList} />
+    <Route path="/add-item" component={(props: RouteComponentProps<{}>) => (
       <AddItem onSubmitSuccess={() => props.history.push("/")} />
-      )}} />
+    )} />
   </Content>
 );
 

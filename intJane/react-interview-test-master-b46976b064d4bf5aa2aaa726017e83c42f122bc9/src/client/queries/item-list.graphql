@@ -1,0 +1,6 @@
+query ItemList {
+  items {
+    id
+    name
+  }
+}

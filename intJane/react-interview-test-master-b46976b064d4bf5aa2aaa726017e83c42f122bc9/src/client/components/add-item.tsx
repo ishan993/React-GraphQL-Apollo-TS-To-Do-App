@@ -44,11 +44,7 @@ const NameInput = glamorous.input(
   sharedInputStyles,
   { height: 24 }
 );
-const DescInput = glamorous.input(
-  sharedInputStyles,
-  {height: 40}
-);
- 
+
 const Button = glamorous.button({
   height: 40,
   backgroundColor: "#e9e9e9",
@@ -81,10 +77,6 @@ const AddItem = ({ handleSubmit }: AddItemInnerProps) => (
       Name
       <Field name="name" component={NameField} />
     </Label>
-    <Label>
-      <Field name="description" component={DescInput}/>
-      Description
-      </Label>
     <Button type="submit">Submit</Button>
   </Form>
 );
