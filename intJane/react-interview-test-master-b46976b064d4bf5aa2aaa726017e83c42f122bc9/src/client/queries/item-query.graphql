@@ -1,0 +1,3 @@
+query itemQuery($id: String!) {
+  item(id: $id) { name }
+}

@@ -76,7 +76,9 @@ const ItemList = ({ data, deleteItem}: PassedProps) => {
           data.items.map(({ id, name }: ItemProps) => (
             <ItemRow key={id}>
               <CloseButton onClick={() => handleDeleteItem(id)}>X</CloseButton>
-              <ItemLink to={"/add-item"}>{name}</ItemLink>
+              <ItemLink to={"/items/" + id}>
+                {name}
+              </ItemLink>
             </ItemRow>
           ))
         }

@@ -28,4 +28,14 @@ export interface ItemListQuery {
     name: string,
   } > | null;
 }
+
+export interface QueryItemQueryVariables {
+  id: string;
+}
+
+export interface QueryItemQuery {
+  item: {
+    name: string,
+  } | null;
+}
 /* tslint:enable */
