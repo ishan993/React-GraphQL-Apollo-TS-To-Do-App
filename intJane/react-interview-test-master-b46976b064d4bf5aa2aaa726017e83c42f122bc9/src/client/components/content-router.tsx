@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Route, RouteComponentProps } from "react-router-dom";
+import { Route, RouteComponentProps, Switch } from "react-router-dom";
 import glamorous from "glamorous";
 import ItemList from "./item-list";
 import AddItem from "./add-item";
+import NoMatch from "./no-match";
 
 const Content = glamorous.div({
   marginTop: 30,
@@ -11,10 +12,13 @@ const Content = glamorous.div({
 
 const ContentRouter = () => (
   <Content>
-    <Route path="/" exact={true} component={ItemList} />
-    <Route path="/add-item" component={(props: RouteComponentProps<{}>) => (
-      <AddItem onSubmitSuccess={() => props.history.push("/")} />
-    )} />
+    <Switch>
+      <Route path="/" exact={true} component={ItemList} />
+      <Route path="/add-item" component={(props: RouteComponentProps<{}>) => (
+        <AddItem onSubmitSuccess={() => props.history.push("/")} />
+      )} />
+      <Route component={NoMatch} />
+    </Switch>
   </Content>
 );
 
