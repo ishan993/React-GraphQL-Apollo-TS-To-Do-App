@@ -13,7 +13,7 @@ const Content = glamorous.div({
 const ContentRouter = () => (
   <Content>
     <Switch>
-      <Route path="/" exact={true} component={ItemList} />
+      <Route path="/" exact={true} component={(props: RouteComponentProps<{}>) => <ItemList />} />
       <Route path="/add-item" component={(props: RouteComponentProps<{}>) => (
         <AddItem onSubmitSuccess={() => props.history.push("/")} />
       )} />

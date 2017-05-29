@@ -12,6 +12,16 @@ export interface AddItemMutation {
   };
 }
 
+export interface DeleteItemMutationVariables {
+  id: string;
+}
+
+export interface DeleteItemMutation {
+  deleteItem: {
+    id: string,
+  };
+}
+
 export interface ItemListQuery {
   items: Array< {
     id: string,

@@ -36,6 +36,7 @@ export default (db: string) => {
       addItem(_: void, { name }: { name: string }) {
         const id = makeId();
         const item = { id, name };
+        items.push(item);
         saveItems();
         return item;
       },
