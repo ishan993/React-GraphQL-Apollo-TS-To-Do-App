@@ -15,6 +15,12 @@ type Mutation {
     description: String!
   ): Item!
 
+  editItem(
+    id: String!
+    name: String!
+    description: String!
+  ): Item!
+
   deleteItem (
     id: String!
   ): Item!

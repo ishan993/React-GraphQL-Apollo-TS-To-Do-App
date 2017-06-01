@@ -1,12 +1,13 @@
 import * as React from "react";
 import glamorous from "glamorous";
-import { graphql } from "react-apollo";
+import { graphql, InjectedGraphQLProps } from "react-apollo";
 import { DataProxy } from "apollo-client/data/proxy";
 import { Link } from "react-router-dom";
 import { DocumentNode } from "graphql";
 import { ItemListQuery, DeleteItemMutation } from "../queries/types";
 import { compose } from "recompose";
 import Menu from "./menu";
+import { Item } from "../../shared/types";
 
 const itemListQuery: DocumentNode = require("../queries/item-list.graphql");
 const deleteItemQuery: DocumentNode = require("../queries/delete-item.graphql");
@@ -49,16 +50,10 @@ const ItemLink = glamorous(Link)({
   textDecoration: "none"
 });
 
-export interface PassedProps {
-  deleteItem: Function;
-  data: {
-    items: ItemProps[]
-  };
-}
+type ItemListProps = InjectedGraphQLProps<ItemListQuery>;
 
-interface ItemProps {
-  id: string;
-  name: string;
+export interface PassedProps extends ItemListProps{
+  deleteItem: Function;
 }
 
 const ItemList = ({ data, deleteItem}: PassedProps) => {
@@ -73,7 +68,7 @@ const ItemList = ({ data, deleteItem}: PassedProps) => {
       <Menu />
       <ItemContainer>
         {data && data.items &&
-          data.items.map(({ id, name }: ItemProps) => (
+          data.items.map(({ id, name }: Item) => (
             <ItemRow key={id}>
               <CloseButton onClick={() => handleDeleteItem(id)}>X</CloseButton>
               <ItemLink to={"/items/" + id}>
@@ -89,7 +84,7 @@ const ItemList = ({ data, deleteItem}: PassedProps) => {
 
 export default compose(graphql(itemListQuery),
   graphql(deleteItemQuery, {
-    props({ ownProps, mutate }) {
+    props({ mutate }) {
       return {
         deleteItem(id: string) {
           return mutate({

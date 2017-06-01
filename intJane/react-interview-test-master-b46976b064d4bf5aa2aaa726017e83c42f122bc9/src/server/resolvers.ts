@@ -36,9 +36,17 @@ export default (db: string) => {
       addItem(_: void, { name, description }: { name: string, description: string }) {
         const id = makeId();
         const item = { id, name, description };
+        console.log("I got this id:  "+id);
         items.push(item);
         saveItems();
         return item;
+      },
+      editItem( _:void, {id, name, description}: {id: string, name: string, description: string}){
+        const idx = items.findIndex((i) => i.id == id);
+        items[idx].name = name;
+        items[idx].description = description;
+        saveItems();
+        return items[idx];
       },
       deleteItem(_: void, { id }: { id: string }) {
         const idx = items.findIndex((i) => i.id === id);

@@ -1,5 +1,5 @@
-mutation AddItem( $name: String!, $description: String!) {
-  addItem( name: $name, description: $description ) {
+mutation AddItem($name: String!, $description: String!) {
+  addItem(name: $name, description: $description ) {
     id
     name
     description

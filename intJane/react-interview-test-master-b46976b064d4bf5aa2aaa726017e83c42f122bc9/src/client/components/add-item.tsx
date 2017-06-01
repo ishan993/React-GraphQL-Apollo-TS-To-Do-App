@@ -17,7 +17,7 @@ const Container = glamorous.div({
   width: "80%"
 });
 
-const Form = glamorous.form({
+export const Form = glamorous.form({
   display: "flex",
   margin: "auto",
   padding: "10px",
@@ -26,7 +26,7 @@ const Form = glamorous.form({
   "> *": { margin: "0 0 30px" }
 });
 
-const Label = glamorous.label({
+export const Label = glamorous.label({
   display: "flex",
   flexFlow: "column-reverse",
   "> :first-child": { marginTop: 4 }
@@ -56,14 +56,14 @@ const DescInput = glamorous.textarea(
   { height: 60 }
 );
 
-const ButtonWrapper = glamorous.div({
+export const ButtonWrapper = glamorous.div({
   width: "100%",
   display: "flex",
   justifyContent: "space-around"
 });
 
 
-const Button = glamorous.button({
+export const Button = glamorous.button({
   height: 40,
   flexBasis: "40%",
   backgroundColor: "#e9e9e9",
@@ -77,11 +77,11 @@ const Button = glamorous.button({
   }
 });
 
-const NameField = ({ input }: WrappedFieldProps<{}>) => (
+export const NameField = ({ input }: WrappedFieldProps<{}>) => (
   <NameInput {...input} />
 );
 
-const DescField = ({ input }: WrappedFieldProps<{}>) => (
+export const DescField = ({ input }: WrappedFieldProps<{}>) => (
   <DescInput {...input} />
 );
 interface AddItemOuterProps {
@@ -122,6 +122,7 @@ export default compose<AddItemInnerProps, AddItemOuterProps>(
       _: Dispatch<{}>,
       props: { mutate: Function }
     ): Promise<{}> {
+      console.log("I get hittt!");
       if (!name || !description) throw new Error("Name is required");
       return props.mutate({
         mutation: itemListQuery,

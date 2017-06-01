@@ -24,6 +24,20 @@ export interface DeleteItemMutation {
   };
 }
 
+export interface EditItemMutationVariables {
+  id: string;
+  name: string;
+  description: string;
+}
+
+export interface EditItemMutation {
+  editItem: {
+    id: string,
+    name: string,
+    description: string,
+  };
+}
+
 export interface ItemListQuery {
   items: Array< {
     id: string,
@@ -38,7 +52,9 @@ export interface ItemQueryQueryVariables {
 
 export interface ItemQueryQuery {
   item: {
+    id: string,
     name: string,
+    description: string,
   } | null;
 }
 /* tslint:enable */

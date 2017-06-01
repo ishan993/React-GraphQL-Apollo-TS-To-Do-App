@@ -5,6 +5,8 @@ import ItemList from "./item-list";
 import AddItem from "./add-item";
 import NoMatch from "./no-match";
 import DetailedView from "./detailed-view";
+import EditItem from "./edit-item";
+import { IdParams } from "../../shared/types";
 
 const Content = glamorous.div({
   marginTop: 40,
@@ -15,7 +17,11 @@ const ContentRouter = () => (
   <Content>
     <Switch>
       <Route path="/" exact={true} component={(props: RouteComponentProps<{}>) => <ItemList />} />
-      <Route path="/items/:id" component={(props: RouteComponentProps<{}>) => <DetailedView routeProps={props}/>} />
+      <Route path="/items/edit/:id" component={(props: RouteComponentProps<IdParams>) => (
+        <EditItem routeProps={props} onSubmitSuccess={() => props.history.push("/items"+props.match.params.id)}/>
+      )} />
+      <Route path="/items/:id" component={(props: RouteComponentProps<IdParams>) => (
+        <DetailedView routeProps={props}/>)} />
       <Route path="/add-item" component={(props: RouteComponentProps<{}>) => (
         <AddItem onSubmitSuccess={() => props.history.push("/")} />
       )} />
