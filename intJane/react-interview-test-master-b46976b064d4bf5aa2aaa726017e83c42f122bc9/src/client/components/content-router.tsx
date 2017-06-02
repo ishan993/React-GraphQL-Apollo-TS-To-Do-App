@@ -18,12 +18,14 @@ const ContentRouter = () => (
     <Switch>
       <Route path="/" exact={true} component={(props: RouteComponentProps<{}>) => <ItemList />} />
       <Route path="/items/edit/:id" component={(props: RouteComponentProps<IdParams>) => (
-        <EditItem routeProps={props} onSubmitSuccess={() => props.history.push("/items"+props.match.params.id)}/>
+        <EditItem routeProps={props} 
+            onSubmitSuccess={() => props.history.push("/items/"+props.match.params.id)}
+            onCancel={()=>{ props.history.push("/")}}/>
       )} />
       <Route path="/items/:id" component={(props: RouteComponentProps<IdParams>) => (
         <DetailedView routeProps={props}/>)} />
-      <Route path="/add-item" component={(props: RouteComponentProps<{}>) => (
-        <AddItem onSubmitSuccess={() => props.history.push("/")} />
+      <Route exact={true} path="/add-item" component={(props: RouteComponentProps<{}>) => (
+        <AddItem onSubmitSuccess={() => props.history.push("/")}/>
       )} />
       <Route component={NoMatch} />
     </Switch>

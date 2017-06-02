@@ -22,7 +22,7 @@ const NavBarLink = glamorous(Link)({
 const NavBar = () => (
     <Nav>
         <NavBarLink to={"/"}>
-            Imagine that I'm the NavBar
+            Ishan's Todo App
         </NavBarLink>
     </Nav>
 );

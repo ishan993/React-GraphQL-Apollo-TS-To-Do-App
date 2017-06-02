@@ -8,8 +8,7 @@ import { DataProxy } from "apollo-client/data/proxy";
 import { DocumentNode } from "graphql";
 import { Item } from "../../shared/types";
 import { ItemListQuery, EditItemMutation } from "../queries/types";
-import Menu from "./menu";
-import { RouteComponentProps } from "react-router-dom"; 
+import { RouteComponentProps, Link } from "react-router-dom"; 
 import { Form, NameField, DescField, Label, Button, ButtonWrapper } from "./add-item";
 
 const itemQuery: DocumentNode = require("../queries/item-query.graphql");
@@ -20,8 +19,19 @@ const Container = glamorous.div({
     width: "80%"
 });
 
+const CancelButton = glamorous(Link)({
+  flexBasis: "40%",
+  background: "#e9e9e9",
+  textTransform: "none",
+  textDecoration: "none",
+  color: "black",
+  alignContent: "center",
+  ":hover": { border: "1px solid #f2f0f0" }
+});
+
 interface AddItemOuterProps {
   onSubmitSuccess(): void;
+  onCancel(): void;
   routeProps: RouteComponentProps<{}>;
 }
 
@@ -33,7 +43,7 @@ export interface AddItemInnerProps extends
 const EditItem = ( props: AddItemInnerProps) => {
   return(
     <Container>
-      <Menu />
+      <h1> Edit Item </h1>
       <Form onSubmit={props.handleSubmit}>
         <Label>
           Name
@@ -44,7 +54,11 @@ const EditItem = ( props: AddItemInnerProps) => {
           <Field name="description" component={DescField}/>
         </Label>
         <ButtonWrapper>
-          <Button type="reset" onClick={props.reset}>Reset</Button>
+          <CancelButton to={"/"}>
+            <Label>
+              Cancel
+            </Label>
+          </CancelButton>
           <Button type="submit">Submit</Button>
         </ButtonWrapper>
       </Form>

@@ -59,7 +59,6 @@ export interface PassedProps extends ItemListProps{
 const ItemList = ({ data, deleteItem}: PassedProps) => {
 
   const handleDeleteItem = (id: string) => {
-    console.log("Tried to delete item!");
     deleteItem(id);
   };
 
@@ -67,6 +66,7 @@ const ItemList = ({ data, deleteItem}: PassedProps) => {
     <div>
       <Menu />
       <ItemContainer>
+        {data && data.items && data.items.length < 1 ? "Nothing to display" : " "}
         {data && data.items &&
           data.items.map(({ id, name }: Item) => (
             <ItemRow key={id}>

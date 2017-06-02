@@ -59,7 +59,8 @@ const DescInput = glamorous.textarea(
 export const ButtonWrapper = glamorous.div({
   width: "100%",
   display: "flex",
-  justifyContent: "space-around"
+  justifyContent: "space-around",
+  alignContent: "center"
 });
 
 
@@ -122,7 +123,6 @@ export default compose<AddItemInnerProps, AddItemOuterProps>(
       _: Dispatch<{}>,
       props: { mutate: Function }
     ): Promise<{}> {
-      console.log("I get hittt!");
       if (!name || !description) throw new Error("Name is required");
       return props.mutate({
         mutation: itemListQuery,

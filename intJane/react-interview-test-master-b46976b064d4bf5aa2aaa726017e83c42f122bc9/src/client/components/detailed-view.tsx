@@ -5,7 +5,7 @@ import { DocumentNode } from "graphql";
 import { Link } from "react-router-dom";
 import { ItemQueryQuery } from "../queries/types";
 import { RouteComponentProps } from "react-router-dom"; 
-import NoMatch from "./no-match"
+import NoMatch from "./no-match";
 
 const itemQuery: DocumentNode = require("../queries/item-query.graphql");
 
@@ -32,7 +32,7 @@ const EditButton = glamorous(Link)({
     borderBottom: "3px solid rgba(0, 0, 0, .08)",
     outline: "none",
     ":hover": {background: "#30b29f"}
-})
+});
 
 const TitleText = glamorous.h1({
     fontWeight: 200
@@ -43,20 +43,20 @@ const BodyText = glamorous.h4({
 });
 
 export interface DetailedViewProps extends
-    InjectedGraphQLProps<ItemQueryQuery>{
-        routeProps: RouteComponentProps<{}>
-    }
+    InjectedGraphQLProps<ItemQueryQuery> {
+        routeProps: RouteComponentProps<{}>;
+}
 
 const DetailedView = ( props: DetailedViewProps) => {
 
-    const showLoading = () =>{
-        if(props.data && props.data.loading){
+    const showLoading = () => { 
+        if (props.data && props.data.loading) {
            return(<h4>Loading...</h4> );
         }
-    }
+    };
 
     const showItem = () => {
-        if(props.data && props.data.item){
+        if (props.data && props.data.item) {
             return(
                 <Wrapper>
                     <ButtonWrapper>
@@ -67,15 +67,15 @@ const DetailedView = ( props: DetailedViewProps) => {
                 </Wrapper>
             );
         }
-    }
+    };
+
     const showPageNotFound = () => {
-        if(props.data && !props.data.item && !props.data.loading){
+        if (props.data && !props.data.item && !props.data.loading) {
             return(<NoMatch/>);
         }
-    }
+    };
     return(
         <div>
-            
             { showLoading() }
             { showItem() }
             { showPageNotFound() }
@@ -84,6 +84,6 @@ const DetailedView = ( props: DetailedViewProps) => {
 };
 
 export default graphql(itemQuery, { 
-    options: ({ routeProps }) =>({
+    options: ({ routeProps }) => ({
          variables: {id: routeProps.match.params.id} })
-        })(DetailedView);
+    })(DetailedView);

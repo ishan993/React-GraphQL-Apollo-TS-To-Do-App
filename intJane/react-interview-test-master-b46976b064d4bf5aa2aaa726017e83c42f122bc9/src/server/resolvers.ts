@@ -36,7 +36,6 @@ export default (db: string) => {
       addItem(_: void, { name, description }: { name: string, description: string }) {
         const id = makeId();
         const item = { id, name, description };
-        console.log("I got this id:  "+id);
         items.push(item);
         saveItems();
         return item;
