@@ -1,0 +1,7 @@
+mutation EditItem($id: String!, $name: String!, $description: String!) {
+  editItem(id: $id, name: $name, description: $description ) {
+    id
+    name
+    description
+  }
+}
