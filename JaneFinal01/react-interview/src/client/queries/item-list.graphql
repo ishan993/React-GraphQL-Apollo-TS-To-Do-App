@@ -1,7 +1,0 @@
-query ItemList {
-  items {
-    id
-    name
-    description
-  }
-}
