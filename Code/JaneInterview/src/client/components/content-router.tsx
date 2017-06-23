@@ -16,7 +16,7 @@ const Content = glamorous.div({
 const ContentRouter = () => (
   <Content>
     <Switch>
-      <Route path="/" exact={true} component={(props: RouteComponentProps<{}>) => <ItemList />} />
+      <Route path="/" component={(props: RouteComponentProps<{}>) => <ItemList />} />
       <Route path="/items/edit/:id" component={(props: RouteComponentProps<IdParams>) => (
         <EditItem routeProps={props} 
             onSubmitSuccess={() => props.history.push("/items/"+props.match.params.id)}
